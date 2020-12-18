@@ -23,8 +23,7 @@ if __name__ == '__main__':
     with open('curve_2_full_run.pickle', 'rb') as f:
         path = pickle.load(f)
 
-    counter = 0
-    for i in path:
+    for counter, i in enumerate(path):
         p = Point(i.pose.position.x, i.pose.position.y, i.pose.position.z)
         q = Quaternion(i.pose.orientation.x, i.pose.orientation.y, i.pose.orientation.z, i.pose.orientation.w)
         right_arm.move_pose(p, q)
@@ -33,8 +32,6 @@ if __name__ == '__main__':
             rospy.sleep(10.0)
         else:
             rospy.sleep(1.0)
-
-        counter += 1
         # if counter == 5:
         #     break
         print(p)
